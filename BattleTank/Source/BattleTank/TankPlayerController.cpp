@@ -22,3 +22,28 @@ void ATankPlayerController::BeginPlay()
 	}
 	
 }
+
+void ATankPlayerController::Tick(float DeltaTime)
+{
+	Super::Tick(DeltaTime);
+	AimTowardsCrosshair();
+	
+}
+
+void ATankPlayerController::AimTowardsCrosshair()
+{
+	if (!GetControlledTank()) 
+	{ 
+		UE_LOG(LogTemp, Warning, TEXT("Not a tank!"));
+		return; 
+	}
+	else
+	{
+		UE_LOG(LogTemp, Warning, TEXT("tank!"));
+	}
+
+	// Get world location if linetrace through crosshair
+	// If it hits the landscape
+	// Tell controlled tank to aim at this point
+
+}
