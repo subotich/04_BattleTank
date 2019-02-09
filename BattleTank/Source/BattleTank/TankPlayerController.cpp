@@ -3,6 +3,7 @@
 #include "TankPlayerController.h"
 #include "BattleTank.h"
 
+
 void ATankPlayerController::BeginPlay()
 {
 	Super::BeginPlay();
@@ -44,7 +45,6 @@ ATank* ATankPlayerController::GetControlledTank() const
 	return Cast<ATank>(GetPawn());
 }
 
-
 // Get world location if linetrace through crosshair, true if hits landscape
 bool ATankPlayerController::GetSightRayHitLocation(FVector& HitLocation) const
 {
@@ -71,7 +71,7 @@ bool ATankPlayerController::GetLookVectorHitLocation(FVector LookDirection, FVec
 	FHitResult HitResult;
 	auto StartLocation = PlayerCameraManager->GetCameraLocation();
 	auto EndLocation = StartLocation + (LookDirection * LineTraceRange);
-
+	
 	if (GetWorld()->LineTraceSingleByChannel(
 		HitResult,
 		StartLocation,
