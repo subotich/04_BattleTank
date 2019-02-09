@@ -26,4 +26,6 @@ public:
 
 	void AimAt(FVector HitLocation);
 
+private:
+	staticmeshcomponent
 };
