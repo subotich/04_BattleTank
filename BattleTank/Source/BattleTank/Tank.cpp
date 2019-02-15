@@ -1,6 +1,8 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 #include "Tank.h"
+#include "TankAimingComponent.h"
+#include "BattleTank.h"
 
 // Sets default values
 ATank::ATank()
