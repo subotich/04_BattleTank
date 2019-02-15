@@ -23,7 +23,6 @@ void UTankAimingComponent::AimAt(FVector HitLocation, float LaunchSpeed)
 {
 	//auto OurTankName = GetOwner()->GetName();
 	//UE_LOG(LogTemp, Warning, TEXT("%s is aiming at %s"), *OurTankName, *(HitLocation.ToString()));
-
 	//auto BarrelLocation = Barrel->GetComponentLocation().ToString();
 	//UE_LOG(LogTemp, Warning, TEXT("%s is aiming at %s from barrel location %s"), *OurTankName, *(HitLocation.ToString()), *BarrelLocation);
 
@@ -38,7 +37,10 @@ void UTankAimingComponent::AimAt(FVector HitLocation, float LaunchSpeed)
 		StartLocation,
 		HitLocation,
 		LaunchSpeed,
-		ESuggestProjVelocityTraceOption::TraceFullPath
+		false,
+		0,
+		0,
+		ESuggestProjVelocityTraceOption::DoNotTrace
 	);
 
 	auto Time = GetWorld()->GetTimeSeconds();
