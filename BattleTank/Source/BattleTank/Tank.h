@@ -25,6 +25,9 @@ public:
 	UFUNCTION(BlueprintCallable, Category = Setup)			// Appears in the blueprint as function
 	void SetTurretReference(UTankTurret* TurretToSet);
 
+	UFUNCTION(BlueprintCallable, Category = Firing)			// Appears in the blueprint as function
+	void Fire();
+
 protected:
 	UTankAimingComponent* TankAimingComponent = nullptr;
 

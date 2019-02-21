@@ -60,11 +60,7 @@ void UTankAimingComponent::AimAt(FVector HitLocation, float LaunchSpeed)
 
 		MoveBarrelTowards(AimDirection);
 
-		UE_LOG(LogTemp, Warning, TEXT("%f: Aim solution found"), Time);
-	}
-	else
-	{
-		UE_LOG(LogTemp, Warning, TEXT("%f: No aim solve found"), Time);
+		//UE_LOG(LogTemp, Warning, TEXT("%f: Aim solution found"), Time);
 	}
 }
 
