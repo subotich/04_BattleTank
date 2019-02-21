@@ -2,6 +2,7 @@
 
 #include "TankAimingComponent.h"
 #include "TankBarrel.h"		// cannot use forward declaration when using (calling) methods
+#include "TankTurret.h"		// cannot use forward declaration when using (calling) methods
 #include "BattleTank.h"
 
 // Sets default values for this component's properties
@@ -16,7 +17,14 @@ UTankAimingComponent::UTankAimingComponent()
 
 void UTankAimingComponent::SetBarrelReference(UTankBarrel* BarrelToSet)
 {
+	if (!BarrelToSet) { return; }
 	Barrel = BarrelToSet;
+}
+
+void UTankAimingComponent::SetTurretReference(UTankTurret* TurretToSet)
+{
+	if (!TurretToSet) { return; }
+	Turret = TurretToSet;
 }
 
 void UTankAimingComponent::AimAt(FVector HitLocation, float LaunchSpeed)
