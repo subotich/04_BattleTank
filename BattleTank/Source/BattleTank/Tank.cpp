@@ -2,6 +2,7 @@
 
 #include "Tank.h"
 #include "TankAimingComponent.h"
+#include "TankMovementComponent.h"
 #include "TankBarrel.h"
 #include "Projectile.h"
 #include "BattleTank.h"
@@ -13,7 +14,10 @@ ATank::ATank()
 	PrimaryActorTick.bCanEverTick = false;
 
 	// No need to protect pointers as added at construction
+	//These appear under the tank's BP as "Inherited" components
 	TankAimingComponent = CreateDefaultSubobject<UTankAimingComponent>(FName("Aiming Component"));
+	TankMovementComponent = CreateDefaultSubobject<UTankMovementComponent>(FName("Movement Component"));
+
 }
 
 // Called when the game starts or when spawned
