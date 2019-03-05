@@ -2,4 +2,9 @@
 
 
 #include "TankMovementComponent.h"
+#include "BattleTank.h"
 
+void UTankMovementComponent::IntendMoveForward(float Throw)
+{
+	UE_LOG(LogTemp, Warning, TEXT("IntendMoveForward"),);
+}
