@@ -24,6 +24,12 @@ public:
 	UFUNCTION(BlueprintCallable, Category = Input)		// Allows to attach "Tank Movement Component" to it (@BP Input Setup)
 	void IntendMoveForward(float Throw);
 
+	UFUNCTION(BlueprintCallable, Category = Input)
+	void IntendTurnRight(float Throw);
+	
+	UFUNCTION(BlueprintCallable, Category = Input)
+	void IntendTurnLeft(float Throw);
+
 private:
 	UTankTrack* LeftTrack = nullptr;
 	UTankTrack* RightTrack = nullptr;
