@@ -36,3 +36,13 @@ void UTankMovementComponent::IntendTurnLeft(float Throw)
 	// TODO pervent double speed?
 	// TODO fix forces and/or collisions: tank goes crazy when speeding and changing directions
 }
+
+void UTankMovementComponent::RequestDirectMove(const FVector& MoveVelocity, bool bForceMaxSpeed)
+{
+	// No need to call Super as we're replacing functionality 
+	auto TankName = GetOwner()->GetName();
+	auto MoveVelocityString = MoveVelocity.ToString();
+
+	UE_LOG(LogTemp, Warning, TEXT("%s is vectoring to %s"), *TankName, *MoveVelocityString);
+
+}
