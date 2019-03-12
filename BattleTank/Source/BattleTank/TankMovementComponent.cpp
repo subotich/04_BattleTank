@@ -51,7 +51,14 @@ void UTankMovementComponent::RequestDirectMove(const FVector& MoveVelocity, bool
 	// No need to call Super as we're replacing functionality 
 	auto TankForward = GetOwner()->GetActorForwardVector().GetSafeNormal();
 	auto AIForwardIntention = MoveVelocity.GetSafeNormal();
-	auto ForwardThrow = FVector::DotProduct(TankForward, AIForwardIntention);
 
+	// do the same as tunrning right, for the backwards move
+	auto ForwardThrow = FVector::DotProduct(TankForward, AIForwardIntention);
 	IntendMoveForward(ForwardThrow);
+
+	
+	// don't make full turn right when angle is 270, instead turn left
+	auto RightThrow = FVector::CrossProduct(TankForward, AIForwardIntention).Z;
+	IntendTurnRight(RightThrow);
+
 }
