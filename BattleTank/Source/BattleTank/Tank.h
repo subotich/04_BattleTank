@@ -31,9 +31,10 @@ public:
 	void Fire();
 
 protected:
+	UPROPERTY(BlueprintReadOnly)								// Appears in the blueprint
 	UTankAimingComponent* TankAimingComponent = nullptr;
 
-	UPROPERTY(BlueprintReadOnly)								// Appears in the blueprint under
+	UPROPERTY(BlueprintReadOnly)								// Appears in the blueprint
 	UTankMovementComponent* TankMovementComponent = nullptr;
 
 private:	
