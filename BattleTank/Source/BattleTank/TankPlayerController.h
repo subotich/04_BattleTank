@@ -7,10 +7,12 @@
 #include "TankPlayerController.generated.h"
 
 // Forward Declaration
-class ATank;
+/* removed during refactoring */
+//class ATank;
+class UTankAimingComponent;
 
 /**
- * 
+ * Responsible for helping the player aim.
  */
 UCLASS()
 class BATTLETANK_API ATankPlayerController : public APlayerController
@@ -43,6 +45,15 @@ private:
 	bool GetLookDirection(FVector2D ScreenLocation, FVector& LookDirection) const;
 
 protected:
+	/* removed during refactoring */
+	/*
+
 	UFUNCTION(BlueprintCallable, Category = "Setup")
 	ATank* GetControlledTank() const;
+
+	*/
+
+	UFUNCTION(BlueprintImplementableEvent, Category = "Setup")
+	void FoundAimingComponent(UTankAimingComponent* AimCompRef);
+
 };
