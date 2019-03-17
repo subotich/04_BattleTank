@@ -1,25 +1,38 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 #include "TankAIController.h"
-#include "Tank.h"
+#include "TankAimingComponent.h"
+/* removed during refactoring */
+//#include "Tank.h"
+#include "GameFramework/Pawn.h"
 #include "BattleTank.h"
+
+/*
+Depends on movement component via pathfinding system
+*/
+void ATankAIController::BeginPlay()
+{
+	Super::BeginPlay();
+}
 
 void ATankAIController::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
-	AiTank = Cast<ATank>(GetPawn());
-	PlayerTank = Cast<ATank>(GetWorld()->GetFirstPlayerController()->GetPawn());
+	auto AiTank = GetPawn();
+	auto PlayerTank = GetWorld()->GetFirstPlayerController()->GetPawn();
 
-	if (AiTank && PlayerTank)
-	{
-		// Move towards player tank
-		MoveToActor(PlayerTank, AcceptanceRadius);
+	if (!ensure(AiTank && PlayerTank)) { return; }
 
-		// Aim towards the player
-		AiTank->AimAt(PlayerTank->GetActorLocation());
+	auto AimingComponent = AiTank->FindComponentByClass<UTankAimingComponent>();
 
-		// Fire if ready
-		AiTank->Fire(); // TODO don't fire every frame, limit firing rate
-	}
+	// Move towards player tank
+	MoveToActor(PlayerTank, AcceptanceRadius);
 
+	// Aim towards the player
+	AimingComponent->AimAt(PlayerTank->GetActorLocation());
+	
+	UE_LOG(LogTemp, Warning, TEXT("AI rdy 2 Fire!"));
+	// Fire if ready
+	AimingComponent->Fire(); // TODO don't fire every frame, limit firing rate
 }
+
