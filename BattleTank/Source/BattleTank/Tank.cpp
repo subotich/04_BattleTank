@@ -23,31 +23,22 @@ ATank::ATank()
 	*/
 }
 
+/* removed during refactoring */
+/*
 // Called when the game starts or when spawned
 void ATank::BeginPlay()
 {
 	Super::BeginPlay();		// Needed for BP Begin Play to run
-	
-	/* removed during refactoring */
-	/*
 
 	TankAimingComponent = FindComponentByClass<UTankAimingComponent>();
-
-	*/
 }
 
-/* removed during refactoring */
-/*
 // Tell controlled tank to aim at this point
 void ATank::AimAt(FVector HitLocation)
 {
 	if (!ensure(TankAimingComponent)) { return; }
 	TankAimingComponent->AimAt(HitLocation, LaunchSpeed);
 }
-*/
-
-/* removed during refactoring */
-/*
 
 void ATank::SetBarrelReference(UTankBarrel* BarrelToSet)
 {
