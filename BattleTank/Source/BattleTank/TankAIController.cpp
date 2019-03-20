@@ -31,7 +31,7 @@ void ATankAIController::Tick(float DeltaTime)
 	// Aim towards the player
 	AimingComponent->AimAt(PlayerTank->GetActorLocation());
 	
-	UE_LOG(LogTemp, Warning, TEXT("AI rdy 2 Fire!"));
+	//UE_LOG(LogTemp, Warning, TEXT("AI rdy 2 Fire!"));
 	// Fire if ready
 	AimingComponent->Fire(); // TODO don't fire every frame, limit firing rate
 }
