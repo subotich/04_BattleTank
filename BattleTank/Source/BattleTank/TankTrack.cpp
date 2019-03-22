@@ -20,7 +20,7 @@ void UTankTrack::OnHit(UPrimitiveComponent* HitComponent, AActor* OtherActor, UP
 	//UE_LOG(LogTemp, Warning, TEXT("Track hits the ground!"));
 	DriveTrack();
 	ApplySidewaysForce();
-	CurrentThrottle = 0;
+	CurrentThrottle = 0;		// resets the throttle
 }
 
 
