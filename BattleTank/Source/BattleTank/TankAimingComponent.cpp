@@ -109,6 +109,9 @@ void UTankAimingComponent::AimAt(FVector HitLocation)
 	}
 }
 
+/*
+TODO: check declaration of 'AimDirection' hides class member	BattleTank	C:\Users\subotich\Documents\Unreal Projects\04_BattleTank\BattleTank\Source\BattleTank\TankAimingComponent.cpp	112	
+*/
 void UTankAimingComponent::MoveBarrelTowards(FVector AimDirection)
 {
 	if (!ensure(Barrel && Turret)) { return; }
