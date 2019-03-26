@@ -109,6 +109,11 @@ void UTankAimingComponent::AimAt(FVector HitLocation)
 	}
 }
 
+EFiringState UTankAimingComponent::GetFirinigState()
+{
+	return FiringState;
+}
+
 /*
 TODO: check declaration of 'AimDirection' hides class member	BattleTank	C:\Users\subotich\Documents\Unreal Projects\04_BattleTank\BattleTank\Source\BattleTank\TankAimingComponent.cpp	112	
 */

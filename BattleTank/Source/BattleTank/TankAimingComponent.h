@@ -39,6 +39,8 @@ public:
 
 	void AimAt(FVector HitLocation);
 
+	EFiringState GetFirinigState();
+
 	/* removed during refactoring */
 	/*
 
