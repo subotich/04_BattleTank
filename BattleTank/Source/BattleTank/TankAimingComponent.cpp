@@ -58,7 +58,6 @@ bool UTankAimingComponent::IsBarrelMoving()
 	return !BarrelForward.Equals(AimDirection, 0.01);
 }
 
-
 /* removed during refactoring */
 /*
 
@@ -113,7 +112,6 @@ void UTankAimingComponent::AimAt(FVector HitLocation)
 	}
 }
 
-
 EFiringState UTankAimingComponent::GetFirinigState() const
 {
 	return FiringState;
@@ -124,9 +122,6 @@ int UTankAimingComponent::GetRoundsLeft() const
 	return RoundsLeft;
 }
 
-/*
-TODO: check declaration of 'AimDirection' hides class member	BattleTank	C:\Users\subotich\Documents\Unreal Projects\04_BattleTank\BattleTank\Source\BattleTank\TankAimingComponent.cpp	112	
-*/
 void UTankAimingComponent::MoveBarrelTowards(FVector AimDirection)
 {
 	if (!ensure(Barrel && Turret)) { return; }
@@ -142,7 +137,7 @@ void UTankAimingComponent::MoveBarrelTowards(FVector AimDirection)
 
 	Barrel->Elevate(DeltaRotator.Pitch);
 	// Always yaw the shortest way
-	if (DeltaRotator.Yaw < 180)
+	if (FMath::Abs(DeltaRotator.Yaw) < 180)
 	{
 		Turret->Rotate(DeltaRotator.Yaw);
 	}
