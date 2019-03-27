@@ -35,7 +35,7 @@ void ATankAIController::Tick(float DeltaTime)
 	{
 		//UE_LOG(LogTemp, Warning, TEXT("AI rdy 2 Fire!"));
 		// Fire if ready
-		AimingComponent->Fire(); // TODO don't fire every frame, limit firing rate
+		AimingComponent->Fire();
 	}
 }
 
