@@ -43,7 +43,7 @@ public:
 	EFiringState GetFirinigState() const;
 
 	UFUNCTION(BlueprintCallable, Category = "Firing")			// Appears in the blueprint as function
-	int GetRoundsLeft() const;
+	int32 GetRoundsLeft() const;
 
 	/* removed during refactoring */
 	/*
@@ -76,10 +76,14 @@ private:
 	float ReloadTimeInSeconds = 3;
 
 	double LastFireTime = 0;
-
+	/*
+	TankAimingComponent.cpp(125): warning C4458: declaration of 'AimDirection' hides class member
+	TankAimingComponent.h(80): note: see declaration of 'UTankAimingComponent::AimDirection'
+	*/
 	FVector AimDirection;
 
-	int RoundsLeft = 3;
+	UPROPERTY(EditDefaultsOnly, Category = "Firing")
+	int32 RoundsLeft = 3;
 
 protected:
 	UPROPERTY(BlueprintReadOnly, Category = "State")

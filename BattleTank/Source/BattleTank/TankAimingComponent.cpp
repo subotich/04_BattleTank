@@ -117,11 +117,15 @@ EFiringState UTankAimingComponent::GetFirinigState() const
 	return FiringState;
 }
 
-int UTankAimingComponent::GetRoundsLeft() const
+int32 UTankAimingComponent::GetRoundsLeft() const
 {
 	return RoundsLeft;
 }
 
+/*
+TankAimingComponent.cpp(125) : warning C4458 : declaration of 'AimDirection' hides class member
+TankAimingComponent.h(80) : note: see declaration of 'UTankAimingComponent::AimDirection'
+*/
 void UTankAimingComponent::MoveBarrelTowards(FVector AimDirection)
 {
 	if (!ensure(Barrel && Turret)) { return; }
