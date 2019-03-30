@@ -23,6 +23,9 @@ AProjectile::AProjectile()
 	ImpactBlast->SetupAttachment(CollisionMesh);
 	ImpactBlast->bAutoActivate = false;
 
+	ExplosionForce = CreateDefaultSubobject<URadialForceComponent>(FName("Explosion Force"));
+	ExplosionForce->SetupAttachment(CollisionMesh);
+
 	// No need to protect pointers as added at construction
 	ProjectileMovement = CreateDefaultSubobject<UProjectileMovementComponent>(FName("ProjectileMovement Component"));
 	ProjectileMovement->bAutoActivate = false;
@@ -40,6 +43,7 @@ void AProjectile::OnHit(UPrimitiveComponent* HitComponent, AActor* OtherActor, U
 	//UE_LOG(LogTemp, Warning, TEXT("LaunchProjectile onHit"));
 	LaunchBlast->Deactivate();
 	ImpactBlast->Activate();
+	ExplosionForce->FireImpulse();
 }
 
 
