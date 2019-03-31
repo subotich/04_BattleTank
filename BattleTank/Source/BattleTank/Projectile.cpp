@@ -38,19 +38,37 @@ void AProjectile::BeginPlay()
 	CollisionMesh->OnComponentHit.AddDynamic(this, &AProjectile::OnHit);
 }
 
-void AProjectile::OnHit(UPrimitiveComponent* HitComponent, AActor* OtherActor, UPrimitiveComponent* OtherComponent, FVector NormalImpulse, const FHitResult& Hit)
-{
-	//UE_LOG(LogTemp, Warning, TEXT("LaunchProjectile onHit"));
-	LaunchBlast->Deactivate();
-	ImpactBlast->Activate();
-	ExplosionForce->FireImpulse();
-}
-
 
 void AProjectile::LaunchProjectile(float Speed)
 {
 	//UE_LOG(LogTemp, Warning, TEXT("LaunchProjectile at speed: %f"), Speed);
 	ProjectileMovement->SetVelocityInLocalSpace(FVector::ForwardVector * Speed);
 	ProjectileMovement->Activate();
+}
+
+//TODO check if destroying components is needed in this version of unreal, seems like it's handled already
+void AProjectile::OnHit(UPrimitiveComponent* HitComponent, AActor* OtherActor, UPrimitiveComponent* OtherComponent, FVector NormalImpulse, const FHitResult& Hit)
+{
+	//UE_LOG(LogTemp, Warning, TEXT("LaunchProjectile onHit"));
+	LaunchBlast->Deactivate();
+	ImpactBlast->Activate();
+	ExplosionForce->FireImpulse();
+
+	SetRootComponent(ImpactBlast);
+	CollisionMesh->DestroyComponent();
+
+	FTimerHandle Timer;
+	GetWorld()->GetTimerManager().SetTimer(
+		Timer,
+		this,
+		&AProjectile::OnTimerExpire,
+		DestroyDelay,
+		false
+	);
+}
+
+void AProjectile::OnTimerExpire()
+{
+	Destroy();
 }
 
