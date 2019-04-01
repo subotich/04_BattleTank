@@ -39,6 +39,11 @@ float ATank::TakeDamage(float DamageAmount, struct FDamageEvent const& DamageEve
 	return DamageToApply;
 }
 
+float ATank::GetHealthPercentage() const
+{
+	return (float)CurrentHealth / (float)StartingHealth;
+}
+
 /* removed during refactoring */
 /*
 // Called when the game starts or when spawned
