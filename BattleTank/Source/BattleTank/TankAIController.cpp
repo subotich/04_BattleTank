@@ -3,7 +3,12 @@
 #include "TankAIController.h"
 #include "TankAimingComponent.h"
 /* removed during refactoring */
-//#include "Tank.h"
+/* 
+readed during observer pattern 
+TODO challenge this
+*/
+#include "Tank.h" // So we can implement method OnDeath ?!
+// is added so it can cast to tank ..
 #include "GameFramework/Pawn.h"
 #include "BattleTank.h"
 
@@ -13,6 +18,24 @@ Depends on movement component via pathfinding system
 void ATankAIController::BeginPlay()
 {
 	Super::BeginPlay();
+}
+
+void ATankAIController::SetPawn(APawn* InPawn)
+{
+	Super::SetPawn(InPawn);
+	if (InPawn)
+	{
+		auto PossesedTank = Cast<ATank>(InPawn);
+		if (!ensure(PossesedTank)) { return; }
+		UE_LOG(LogTemp, Warning, TEXT("Tank possesed!"));
+		// TODO Subscribe our local method to the tank's death event
+		PossesedTank->OnDeath.AddUniqueDynamic(this, &ATankAIController::OnPossesedTankDeath);
+	}
+}
+
+void ATankAIController::OnPossesedTankDeath()
+{
+	UE_LOG(LogTemp, Warning, TEXT("Event triggered & observer received!"));
 }
 
 void ATankAIController::Tick(float DeltaTime)
