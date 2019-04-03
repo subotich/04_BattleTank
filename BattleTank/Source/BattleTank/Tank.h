@@ -52,11 +52,11 @@ private:
 	// Sets default values for this pawn's properties
 	ATank();
 	
-	/* removed during refactoring */
-	/*
-	
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
+
+	/* removed during refactoring */
+	/*
 
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
@@ -80,6 +80,6 @@ private:
 	int32 StartingHealth = 100;
 
 	UPROPERTY(VisibleAnywhere, Category = "Health")
-	int32 CurrentHealth = StartingHealth;
+	int32 CurrentHealth; // Moved init in begin play
 
 };
