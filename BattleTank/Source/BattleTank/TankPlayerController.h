@@ -36,6 +36,8 @@ private:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
+	virtual void SetPawn(APawn* InPawn) override;
+
 	void AimTowardsCrosshair();
 
 	bool GetSightRayHitLocation(FVector& HitLocation) const;
@@ -43,6 +45,9 @@ private:
 	bool GetLookVectorHitLocation(FVector LookDirection, FVector& HitLocation) const;
 
 	bool GetLookDirection(FVector2D ScreenLocation, FVector& LookDirection) const;
+
+	UFUNCTION()
+	void OnPossesedTankDeath();
 
 protected:
 	/* removed during refactoring */

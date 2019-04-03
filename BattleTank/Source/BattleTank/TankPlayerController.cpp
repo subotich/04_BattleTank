@@ -3,7 +3,12 @@
 #include "TankPlayerController.h"
 #include "TankAimingComponent.h"
 /* removed during refactoring */
-//#include "Tank.h"
+/*
+readed during observer pattern
+TODO challenge this
+*/
+#include "Tank.h" // So we can implement method OnDeath ?!
+// is added so it can cast to tank ..
 #include "BattleTank.h"
 
 void ATankPlayerController::BeginPlay()
@@ -23,7 +28,6 @@ void ATankPlayerController::BeginPlay()
 	auto AimingComponent = GetPawn()->FindComponentByClass<UTankAimingComponent>();
 	if (!ensure(AimingComponent)) { return; }
 	FoundAimingComponent(AimingComponent);
-
 }
 
 void ATankPlayerController::Tick(float DeltaTime)
@@ -31,6 +35,26 @@ void ATankPlayerController::Tick(float DeltaTime)
 	Super::Tick(DeltaTime);
 	AimTowardsCrosshair();
 }
+
+void ATankPlayerController::SetPawn(APawn* InPawn)
+{
+	Super::SetPawn(InPawn);
+	if (InPawn)
+	{
+		auto PossesedTank = Cast<ATank>(InPawn);
+		if (!ensure(PossesedTank)) { return; }
+		UE_LOG(LogTemp, Warning, TEXT("Player tank possesed!"));
+		// TODO Subscribe our local method to the tank's death event
+		PossesedTank->OnDeath.AddUniqueDynamic(this, &ATankPlayerController::OnPossesedTankDeath);
+	}
+}
+
+void ATankPlayerController::OnPossesedTankDeath()
+{
+	UE_LOG(LogTemp, Warning, TEXT("Event triggered & observer received!"));
+	StartSpectatingOnly();
+}
+
 
 void ATankPlayerController::AimTowardsCrosshair()
 {
