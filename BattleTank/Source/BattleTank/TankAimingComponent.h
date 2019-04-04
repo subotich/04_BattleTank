@@ -76,10 +76,7 @@ private:
 	float ReloadTimeInSeconds = 3;
 
 	double LastFireTime = 0;
-	/*
-	TankAimingComponent.cpp(125): warning C4458: declaration of 'AimDirection' hides class member
-	TankAimingComponent.h(80): note: see declaration of 'UTankAimingComponent::AimDirection'
-	*/
+
 	FVector AimDirection;
 
 	UPROPERTY(EditDefaultsOnly, Category = "Firing")
