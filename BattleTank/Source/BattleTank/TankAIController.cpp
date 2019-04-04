@@ -46,7 +46,7 @@ void ATankAIController::Tick(float DeltaTime)
 	auto AiTank = GetPawn();
 	auto PlayerTank = GetWorld()->GetFirstPlayerController()->GetPawn();
 
-	if (!ensure(AiTank && PlayerTank)) { return; }
+	if (!(AiTank && PlayerTank)) { return; }
 
 	auto AimingComponent = AiTank->FindComponentByClass<UTankAimingComponent>();
 
