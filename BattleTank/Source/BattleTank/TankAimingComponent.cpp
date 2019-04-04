@@ -122,17 +122,13 @@ int32 UTankAimingComponent::GetRoundsLeft() const
 	return RoundsLeft;
 }
 
-/*
-TankAimingComponent.cpp(125) : warning C4458 : declaration of 'AimDirection' hides class member
-TankAimingComponent.h(80) : note: see declaration of 'UTankAimingComponent::AimDirection'
-*/
-void UTankAimingComponent::MoveBarrelTowards(FVector AimDirection)
+void UTankAimingComponent::MoveBarrelTowards(FVector InAimDirection)
 {
 	if (!ensure(Barrel && Turret)) { return; }
 
 	// Work-out difference between current barrel rotation and AimDirection
 	auto BarrelRotator = Barrel->GetForwardVector().Rotation();
-	auto AimAsRotator = AimDirection.Rotation();
+	auto AimAsRotator = InAimDirection.Rotation();
 	auto DeltaRotator = AimAsRotator - BarrelRotator;
 
 	//UE_LOG(LogTemp, Warning, TEXT("BarrelRotator: %s"), *BarrelRotator.ToString());
