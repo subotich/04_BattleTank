@@ -14,6 +14,7 @@ TODO challenge this
 
 /*
 Depends on movement component via pathfinding system
+TODO check for removal
 */
 void ATankAIController::BeginPlay()
 {

@@ -30,7 +30,7 @@ class BATTLETANK_API UTankAimingComponent : public UActorComponent
 public:
 	virtual void BeginPlay() override;
 
-	virtual void TickComponent(float DeltaTime, enum ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
+	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
 
 	UFUNCTION(BlueprintCallable, Category = "Firing")			// Appears in the blueprint as function
 	void Fire();
