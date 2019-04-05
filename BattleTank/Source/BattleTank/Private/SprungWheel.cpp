@@ -26,13 +26,15 @@ ASprungWheel::ASprungWheel()
 void ASprungWheel::BeginPlay()
 {
 	Super::BeginPlay();
-	
+	if (GetAttachParentActor())
+	{
+		UE_LOG(LogTemp, Warning, TEXT("Not null"));
+	}
+	else
+	{
+		UE_LOG(LogTemp, Warning, TEXT("Null"));
+	}
+
 }
 
-// Called every frame
-void ASprungWheel::Tick(float DeltaTime)
-{
-	Super::Tick(DeltaTime);
-
-}
 
