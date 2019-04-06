@@ -27,15 +27,29 @@ ASprungWheel::ASprungWheel()
 void ASprungWheel::BeginPlay()
 {
 	Super::BeginPlay();
-	if (GetAttachParentActor())
-	{
-		UE_LOG(LogTemp, Warning, TEXT("Not null"));
-	}
-	else
-	{
-		UE_LOG(LogTemp, Warning, TEXT("Null"));
-	}
+
+	SetupConstraint();
 
 }
 
-
+void ASprungWheel::SetupConstraint()
+{
+	UE_LOG(LogTemp, Warning, TEXT("SetupConstraint started"));
+	if (!GetAttachParentActor()) 
+	{
+		UE_LOG(LogTemp, Warning, TEXT("No GetAttachParentActor"));
+		return;
+	}
+	else
+	{
+		UE_LOG(LogTemp, Warning, TEXT("Not null, %s"), *GetAttachParentActor()->GetName());
+	}
+	
+	UPrimitiveComponent* BodyRoot = Cast<UPrimitiveComponent>(GetAttachParentActor()->GetRootComponent());
+	if (!BodyRoot)
+	{
+		UE_LOG(LogTemp, Warning, TEXT("No BodyRoot"));
+		return;
+	}
+	MassWheelConstraint->SetConstrainedComponents(BodyRoot, NAME_None, Wheel, NAME_None);
+}
