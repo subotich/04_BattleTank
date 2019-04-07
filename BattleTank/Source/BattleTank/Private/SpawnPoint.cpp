@@ -20,9 +20,14 @@ void USpawnPoint::BeginPlay()
 {
 	Super::BeginPlay();
 
-	auto NewActor = GetWorld()->SpawnActor<AActor>(SpwanClass);
-	if (!NewActor) return;
-	NewActor->AttachToComponent(this, FAttachmentTransformRules::KeepRelativeTransform);
-
+	auto NewActor = GetWorld()->SpawnActorDeferred<AActor>(SpwanClass, GetComponentTransform());
+	if (!NewActor)
+	{
+		UE_LOG(LogTemp, Warning, TEXT("No NewActor"));
+		return;
+	}
+	UE_LOG(LogTemp, Warning, TEXT("After SpawnActorDeferred"));
+	NewActor->AttachToComponent(this, FAttachmentTransformRules::KeepWorldTransform);
+	UGameplayStatics::FinishSpawningActor(NewActor, GetComponentTransform());
 }
 
