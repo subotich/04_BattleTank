@@ -12,7 +12,7 @@ class BATTLETANK_API USpawnPoint : public USceneComponent
 {
 	GENERATED_BODY()
 
-public:	
+public:
 	// Sets default values for this component's properties
 	USpawnPoint();
 
@@ -23,9 +23,8 @@ protected:
 
 private:
 	UPROPERTY(EditDefaultsOnly, Category = "Setup")
-	TSubclassOf<AActor> SpwanClass;
+	TSubclassOf<AActor> SpawnClass;
 
 	UPROPERTY()
 	AActor* SpawnedActor;
-
 };
