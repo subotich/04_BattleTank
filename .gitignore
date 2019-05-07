@@ -1,4 +1,5 @@
 *.VC.db
+BattleTank.VC.VC.opendb
 .vs/
 
 # Compiled Object files
