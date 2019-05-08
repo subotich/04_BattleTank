@@ -4,14 +4,17 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
-//#include "GameFramework/ProjectileMovementComponent.h"
 #include "Projectile.generated.h"
 
+// Forward declarations
 class UProjectileMovementComponent;
 class UStaticMeshComponent;
 class UParticleSystemComponent;
 class URadialForceComponent;
 
+/**
+ *
+ */
 UCLASS()
 class BATTLETANK_API AProjectile : public AActor
 {
@@ -52,5 +55,4 @@ private:
 
 	UPROPERTY(EditDefaultsOnly, Category = "Setup")
 	float ProjectileDamage = 20.f;
-
 };

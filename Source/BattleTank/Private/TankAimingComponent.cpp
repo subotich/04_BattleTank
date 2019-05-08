@@ -58,23 +58,6 @@ bool UTankAimingComponent::IsBarrelMoving()
 	return !BarrelForward.Equals(AimDirection, 0.01);
 }
 
-/* removed during refactoring */
-/*
-
-void UTankAimingComponent::SetBarrelReference(UTankBarrel* BarrelToSet)
-{
-	if (!BarrelToSet) { return; }
-	Barrel = BarrelToSet;
-}
-
-void UTankAimingComponent::SetTurretReference(UTankTurret* TurretToSet)
-{
-	if (!TurretToSet) { return; }
-	Turret = TurretToSet;
-}
-
-*/
-
 void UTankAimingComponent::AimAt(FVector HitLocation)
 {
 	//auto OurTankName = GetOwner()->GetName();

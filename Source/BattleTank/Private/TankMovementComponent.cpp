@@ -55,10 +55,8 @@ void UTankMovementComponent::RequestDirectMove(const FVector& MoveVelocity, bool
 	// TODO do the same as tunrning right, for the backwards move
 	auto ForwardThrow = FVector::DotProduct(TankForward, AIForwardIntention);
 	IntendMoveForward(ForwardThrow);
-
 	
 	// TODO don't make full turn right when angle is 270, instead turn left
 	auto RightThrow = FVector::CrossProduct(TankForward, AIForwardIntention).Z;
 	IntendTurnRight(RightThrow);
-
 }

@@ -6,10 +6,14 @@
 #include "GameFramework/Actor.h"
 #include "SprungWheel.generated.h"
 
+// Forward declarations
 class UStaticMeshComponent;
 class USphereComponent;
 class UPhysicsConstraintComponent;
 
+/**
+ *
+ */
 UCLASS()
 class BATTLETANK_API ASprungWheel : public AActor
 {
@@ -29,11 +33,6 @@ protected:
 	virtual void Tick(float DeltaTime) override;
 
 private:
-	// Components
-	/* removed */
-	//UPROPERTY(VisibleAnywhere, Category = "Components")
-	//UStaticMeshComponent* Mass = nullptr;
-
 	UPROPERTY(VisibleAnywhere, Category = "Components")
 	USphereComponent* Wheel = nullptr;
 

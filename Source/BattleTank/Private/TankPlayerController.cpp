@@ -63,7 +63,8 @@ void ATankPlayerController::AimTowardsCrosshair()
 	auto AimingComponent = GetPawn()->FindComponentByClass<UTankAimingComponent>();
 	if (!ensure(AimingComponent)) { return; }
 	
-	FVector HitLocation; // Out parameter
+	// Out parameter
+	FVector HitLocation;
 
 	bool bGotHitLocation = GetSightRayHitLocation(HitLocation);
 	if (bGotHitLocation)
@@ -72,16 +73,6 @@ void ATankPlayerController::AimTowardsCrosshair()
 		AimingComponent->AimAt(HitLocation);
 	}
 }
-
-/* removed during refactoring */
-/*
-
-ATank* ATankPlayerController::GetControlledTank() const
-{
-	return GetPawn();
-}
-
-*/
 
 // Get world location if linetrace through crosshair, true if hits landscape
 bool ATankPlayerController::GetSightRayHitLocation(FVector& HitLocation) const

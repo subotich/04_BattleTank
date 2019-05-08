@@ -1,6 +1,5 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
-
 #include "SprungWheel.h"
 #include "PhysicsEngine/PhysicsConstraintComponent.h"
 #include "BattleTank.h"
@@ -15,10 +14,6 @@ ASprungWheel::ASprungWheel()
 	TankSpringConstraint = CreateDefaultSubobject<UPhysicsConstraintComponent>(FName("Tank Spring Constraint"));
 	SetRootComponent(TankSpringConstraint);
 
-	/* removed */
-	//Mass = CreateDefaultSubobject<UStaticMeshComponent>(FName("Mass"));
-	//Mass->SetupAttachment(MassWheelConstraint);
-	
 	Axle = CreateDefaultSubobject<USphereComponent>(FName("Axle"));
 	Axle->SetupAttachment(TankSpringConstraint);
 
@@ -27,7 +22,6 @@ ASprungWheel::ASprungWheel()
 
 	Wheel = CreateDefaultSubobject<USphereComponent>(FName("Wheel"));
 	Wheel->SetupAttachment(Axle);
-
 }
 
 void ASprungWheel::AddDrivingForce(float ForceMagnitude)
@@ -40,11 +34,11 @@ void ASprungWheel::BeginPlay()
 {
 	Super::BeginPlay();
 
-	Wheel->SetNotifyRigidBodyCollision(true); // can be set in BP
+	// Can be set in BP
+	Wheel->SetNotifyRigidBodyCollision(true);
 	Wheel->OnComponentHit.AddDynamic(this, &ASprungWheel::OnHit);
 
 	SetupConstraint();
-
 }
 
 void ASprungWheel::Tick(float DeltaTime)
@@ -52,11 +46,9 @@ void ASprungWheel::Tick(float DeltaTime)
 	Super::Tick(DeltaTime);
 	if (GetWorld()->TickGroup == TG_PostPhysics)
 	{
-		//UE_LOG(LogTemp, Warning, TEXT("OnTick %f"), GetWorld()->GetTimeSeconds());
 		// Reset force every frame
 		TotalForceMagnitudeThisFrame = 0.0f;
 	}
-	
 }
 
 void ASprungWheel::SetupConstraint()

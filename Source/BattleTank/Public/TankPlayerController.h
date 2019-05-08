@@ -7,8 +7,6 @@
 #include "TankPlayerController.generated.h"
 
 // Forward Declaration
-/* removed during refactoring */
-//class ATank;
 class UTankAimingComponent;
 
 /**
@@ -50,14 +48,6 @@ private:
 	void OnPossesedTankDeath();
 
 protected:
-	/* removed during refactoring */
-	/*
-
-	UFUNCTION(BlueprintCallable, Category = "Setup")
-	ATank* GetControlledTank() const;
-
-	*/
-
 	UFUNCTION(BlueprintImplementableEvent, Category = "Setup")
 	void FoundAimingComponent(UTankAimingComponent* AimCompRef);
 

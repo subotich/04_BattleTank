@@ -1,6 +1,5 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
-
 #include "SpawnPoint.h"
 #include "BattleTank.h"
 
@@ -31,7 +30,7 @@ void USpawnPoint::BeginPlay()
 		return;
 	}
 	SpawnedActor->AttachToComponent(this, FAttachmentTransformRules::KeepWorldTransform);
-	UGameplayStatics::FinishSpawningActor(SpawnedActor, GetComponentTransform());
 	
+	UGameplayStatics::FinishSpawningActor(SpawnedActor, GetComponentTransform());
 }
 

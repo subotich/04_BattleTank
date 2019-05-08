@@ -1,6 +1,5 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
-
 #include "Projectile.h"
 #include "GameFramework/ProjectileMovementComponent.h"
 #include "BattleTank.h"
@@ -8,7 +7,7 @@
 // Sets default values
 AProjectile::AProjectile()
 {
- 	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
+	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = false;
 
 	CollisionMesh = CreateDefaultSubobject<UStaticMeshComponent>(FName("Collision Mesh"));
@@ -38,7 +37,6 @@ void AProjectile::BeginPlay()
 	CollisionMesh->OnComponentHit.AddDynamic(this, &AProjectile::OnHit);
 }
 
-
 void AProjectile::LaunchProjectile(float Speed)
 {
 	//UE_LOG(LogTemp, Warning, TEXT("LaunchProjectile at speed: %f"), Speed);
@@ -61,9 +59,9 @@ void AProjectile::OnHit(UPrimitiveComponent* HitComponent, AActor* OtherActor, U
 		this,
 		ProjectileDamage,
 		GetActorLocation(),
-		ExplosionForce->Radius, // for consistancy
+		ExplosionForce->Radius,		// for consistency
 		UDamageType::StaticClass(),
-		TArray<AActor*>() // damage all actors
+		TArray<AActor*>()			// damage all actors
 	);
 
 	FTimerHandle Timer;
